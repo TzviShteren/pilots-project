@@ -2,15 +2,16 @@ import csv
 from model import operation
 
 
-def write_people_to_csv(operations: list[operation], filepath: str):
+def write_operations_to_csv(operations: list[operation], filepath: str):
     try:
         with open(filepath, 'w', newline='') as csvfile:
             csv_writer = csv.DictWriter(csvfile,
                                         fieldnames=['target city', 'priority', 'assigned pilot', 'assigned aircraft',
                                                     'distance',
                                                     'weather conditions',
-                                                    'pilot skill', 'aircraft_speed', 'fuel capacity',
+                                                    'pilot skill', 'aircraft speed', 'fuel capacity',
                                                     'mission fit score'])
+
             csv_writer.writeheader()
 
             for operation in operations:

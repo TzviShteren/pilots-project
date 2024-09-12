@@ -22,13 +22,13 @@ def haversine_distance(lat1, lon1, lat2, lon2):
 
 
 def weather_score(weather):
-    if weather["condition"] == "Clear":
+    if weather == "Clear":
         return 1.0
-    elif weather["condition"] == "Clouds":
+    elif weather == "Clouds":
         return 0.7
-    elif weather["condition"] == "Rain":
+    elif weather == "Rain":
         return 0.4
-    elif weather["condition"] == "Stormy":
+    elif weather == "Stormy":
         return 0.2
     else:
         return 0
@@ -36,6 +36,7 @@ def weather_score(weather):
 
 def difficulty_level_task(weather: str, clouds, wind):
     return (weather_score(weather) + clouds // 10 + wind) * 100
+
 
 
 weights = {

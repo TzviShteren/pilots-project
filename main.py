@@ -1,15 +1,12 @@
 import json
-import orderby
+import random
 import requests
 from utils import calculations, receiving_information
 from repository import json_repository, csv_repository
 from model.possible_mission import PossibleMission
+from model.operation import Operation
 
 My_Api_key = "bf47316e4a70a4097f5c6d36e53530e3"
-
-
-# f'https://api.openweathermap.org/data/2.5/forecast?q={city}&appid={My_Api_key}'
-
 
 # Receiving information about the weather in a certain country (returns according to the relevant time)
 def Weather_in__certain_country(result):
@@ -40,7 +37,7 @@ def getting_coordinates():
             clouds = filtered_for_day["clouds"]["all"]
             wind = filtered_for_day["wind"]["speed"]
             city_coordinates_end_weather.append({"City": city, "weather": weather, "clouds": clouds, "wind": wind,
-                                                  "coordinates": {"lat": lat, "lon": lon}})
+                                                 "coordinates": {"lat": lat, "lon": lon}})
 
     with open("json_files/city_coordinates.json", 'w') as jsonfile:
         json.dump(city_coordinates_end_weather, jsonfile, indent=4)  # I learned it on my own
@@ -52,23 +49,28 @@ if __name__ == '__main__':
     list_of_targets = json_repository.read_from_json("json_files/city_coordinates.json")
     list_of_pilots = json_repository.read_from_json("json_files/pilots.json")
     list_of_targets_level = json_repository.read_from_json("json_files/targets.json")
-    # list_of_targets_level.sort(key=lambda x: x["Priority"], reverse=True)
     list_of_aircrafts = json_repository.read_from_json("json_files/aircrafts.json")
     to_csv = []
     for targets_level in list_of_targets_level:
         data = next(filter(lambda x: x["City"] == targets_level["City"], list_of_targets), False)
+        distance = calculations.haversine_distance(data["coordinates"]["lat"], data["coordinates"]["lon"]
+                                                   , receiving_information.coordinates_Jerusalem["lat"]
+                                                   , receiving_information.coordinates_Jerusalem["lon"])
         for pilot in list_of_pilots:
             for aircraft in list_of_aircrafts:
-                pm = PossibleMission(
+                mission_fit_score = random.randint(1, 100)
+                o = Operation(
                     targets_level["City"],
                     targets_level["Priority"],
                     pilot["name"],
-                    pilot["skill_level"],
                     aircraft["type"],
-                    calculations.haversine_distance(data["coordinates"]["lat"], data["coordinates"]["lon"]
-                                                    , receiving_information.coordinates_Jerusalem[0]
-                                                    , receiving_information.coordinates_Jerusalem[1]),
-                    calculations.difficulty_level_task(data["weather"], data["clouds"], data["wind"])
+                    distance,
+                    data["weather"],
+                    pilot["skill_level"],
+                    aircraft["speed"],
+                    aircraft["fuel_capacity"],
+                    mission_fit_score,
                 )
-                
+                to_csv.append(o)
 
+    csv_repository.write_operations_to_csv(to_csv, "csv_files/operations.csv")
