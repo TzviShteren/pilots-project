@@ -1,66 +1,146 @@
 {
-    "Tehran": [
-        35.6892523,
-        51.3896004
-    ],
-    "Baghdad": [
-        33.3061701,
-        44.3872213
-    ],
-    "Damascus": [
-        33.5130695,
-        36.3095814
-    ],
-    "Kabul": [
-        34.5260109,
-        69.1776838
-    ],
-    "Sanaa": [
-        15.3538569,
-        44.2058841
-    ],
-    "Riyadh": [
-        24.638916,
-        46.7160104
-    ],
-    "Cairo": [
-        30.0443879,
-        31.2357257
-    ],
-    "Beirut": [
-        33.8959203,
-        35.47843
-    ],
-    "Amman": [
-        31.9515694,
-        35.9239625
-    ],
-    "Tripoli": [
-        32.896672,
-        13.1777923
-    ],
-    "Khartoum": [
-        15.5635972,
-        32.5349123
-    ],
-    "Mosul": [
-        36.3415843,
-        43.1291386
-    ],
-    "Fallujah": [
-        33.3532137,
-        43.7875674
-    ],
-    "Kandahar": [
-        31.6205738,
-        65.7157573
-    ],
-    "Marrakesh": [
-        31.6258257,
-        -7.9891608
-    ],
-    "Jerusalem": [
-        31.79592425,
-        35.21198075969497
-    ]
+    "Tehran": {
+        "weather": "Clear",
+        "clouds": 4,
+        "wind": 0.73,
+        "coordinates": {
+            "lat": 35.6944,
+            "lon": 51.4215
+        }
+    },
+    "Baghdad": {
+        "weather": "Clear",
+        "clouds": 0,
+        "wind": 6.25,
+        "coordinates": {
+            "lat": 33.3406,
+            "lon": 44.4009
+        }
+    },
+    "Damascus": {
+        "weather": "Clear",
+        "clouds": 0,
+        "wind": 3.66,
+        "coordinates": {
+            "lat": 33.5102,
+            "lon": 36.2913
+        }
+    },
+    "Kabul": {
+        "weather": "Clear",
+        "clouds": 0,
+        "wind": 0.59,
+        "coordinates": {
+            "lat": 34.5,
+            "lon": 69.4167
+        }
+    },
+    "Sanaa": {
+        "weather": "Clouds",
+        "clouds": 98,
+        "wind": 0.73,
+        "coordinates": {
+            "lat": 15.3547,
+            "lon": 44.2067
+        }
+    },
+    "Riyadh": {
+        "weather": "Clear",
+        "clouds": 8,
+        "wind": 1.04,
+        "coordinates": {
+            "lat": 24.6877,
+            "lon": 46.7219
+        }
+    },
+    "Cairo": {
+        "weather": "Clear",
+        "clouds": 0,
+        "wind": 5.11,
+        "coordinates": {
+            "lat": 30.0626,
+            "lon": 31.2497
+        }
+    },
+    "Beirut": {
+        "weather": "Clear",
+        "clouds": 0,
+        "wind": 2.56,
+        "coordinates": {
+            "lat": 33.8889,
+            "lon": 35.4944
+        }
+    },
+    "Amman": {
+        "weather": "Clear",
+        "clouds": 0,
+        "wind": 1.63,
+        "coordinates": {
+            "lat": 31.9552,
+            "lon": 35.945
+        }
+    },
+    "Tripoli": {
+        "weather": "Rain",
+        "clouds": 51,
+        "wind": 6.41,
+        "coordinates": {
+            "lat": 32.8752,
+            "lon": 13.1875
+        }
+    },
+    "Khartoum": {
+        "weather": "Clouds",
+        "clouds": 53,
+        "wind": 3.06,
+        "coordinates": {
+            "lat": 15.5518,
+            "lon": 32.5324
+        }
+    },
+    "Mosul": {
+        "weather": "Clear",
+        "clouds": 0,
+        "wind": 3.9,
+        "coordinates": {
+            "lat": 36.335,
+            "lon": 43.1189
+        }
+    },
+    "Fallujah": {
+        "weather": "Clear",
+        "clouds": 0,
+        "wind": 5.48,
+        "coordinates": {
+            "lat": 33.3538,
+            "lon": 43.7795
+        }
+    },
+    "Kandahar": {
+        "weather": "Clear",
+        "clouds": 0,
+        "wind": 1.52,
+        "coordinates": {
+            "lat": 31,
+            "lon": 65.75
+        }
+    },
+    "Marrakesh": {
+        "weather": "Clouds",
+        "clouds": 27,
+        "wind": 1.93,
+        "coordinates": {
+            "lat": 31.6315,
+            "lon": -8.0083
+        }
+    },
+    "Jerusalem": {
+        "weather": "Clear",
+        "clouds": 0,
+        "wind": 2.09,
+        "coordinates": {
+            "lat": 31.769,
+            "lon": 35.2163
+        }
+    }
 }
