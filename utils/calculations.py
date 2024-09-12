@@ -21,16 +21,6 @@ def haversine_distance(lat1, lon1, lat2, lon2):
     return distance
 
 
-weights = {
-    "distance": 0.15,
-    "aircraft_type": 0.20,
-    "pilot_skill": 0.20,
-    "weather_conditions": 0.20,
-    "execution_time": 0.10,
-    "priority": 0.15
-}
-
-
 def weather_score(weather):
     if weather["condition"] == "Clear":
         return 1.0
@@ -43,12 +33,25 @@ def weather_score(weather):
     else:
         return 0
 
-"""
+
+def difficulty_level_task(weather: str, clouds, wind):
+    return (weather_score(weather) + clouds // 10 + wind) * 100
+
+
 weights = {
     "distance": 0.20,
-    "aircraft_type": 0.25,
+    "priority": 0.25,
     "pilot_skill": 0.25,
     "weather_conditions": 0.20,
     "execution_time": 0.10
+}
+
+"""
+"priority": 0.25,
+weights = {
+    "Pilot weather expertise": 0.25,
+    "priority": 0.30,
+    "distance": 0.20,
+    "0": 0.25,  # ---------------------------------------
 }
 """

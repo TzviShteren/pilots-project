@@ -1,47 +1,30 @@
 import csv
-from typing import List
-#from model.person import Person
-from toolz import  pipe, partial
-
-def read_people_from_csv(filepath: str) -> List[Person]:
-    try:
-        with open(filepath, 'r', newline='') as csvfile:
-            reader = csv.DictReader(csvfile)
-
-            return pipe(
-                [row for row in reader],
-                partial(map, lambda p: Person(p["name"], p["age"])),
-                list
-            )
-    except Exception as e:
-        print(e)
-        return []
+from model import operation
 
 
-
-def write_person_to_csv(person: Person, filepath: str):
+def write_people_to_csv(operations: list[operation], filepath: str):
     try:
         with open(filepath, 'w', newline='') as csvfile:
-            csv_writer = csv.DictWriter(csvfile, fieldnames=['name', 'age'])
+            csv_writer = csv.DictWriter(csvfile,
+                                        fieldnames=['target city', 'priority', 'assigned pilot', 'assigned aircraft',
+                                                    'distance',
+                                                    'weather conditions',
+                                                    'pilot skill', 'aircraft_speed', 'fuel capacity',
+                                                    'mission fit score'])
             csv_writer.writeheader()
 
-            csv_writer.writerow({
-                'name': person.name,
-                'age': person.age
-            })
-    except Exception as e:
-        print(e)
-
-def write_people_to_csv(people: List[Person], filepath: str):
-    try:
-        with open(filepath, 'w', newline='') as csvfile:
-            csv_writer = csv.DictWriter(csvfile, fieldnames=['name', 'age'])
-            csv_writer.writeheader()
-
-            for person in people:
+            for operation in operations:
                 csv_writer.writerow({
-                    'name': person.name,
-                    'age': person.age
+                    'target city': operation.target_city,
+                    'priority': operation.priority,
+                    'assigned pilot': operation.assigned_pilot,
+                    'assigned aircraft': operation.assigned_aircraft,
+                    'distance': operation.distance,
+                    'weather conditions': operation.weather_conditions,
+                    'pilot skill': operation.pilot_skill,
+                    'aircraft speed': operation.aircraft_speed,
+                    'fuel capacity': operation.fuel_capacity,
+                    'mission fit score': operation.mission_fit_score
                 })
     except Exception as e:
         print(e)
